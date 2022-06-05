@@ -1,0 +1,8 @@
+#!/bin/bash
+sym='墳'  
+if test $(pamixer --get-volume-human) == muted 
+then
+    sym='婢'
+fi
+printf "$sym $(pamixer --get-volume)\n"
+
