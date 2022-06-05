@@ -1,0 +1,66 @@
+# i3blocks configuration file
+#
+# The i3blocks man page describes the usage of the binary,
+# and its website describes the configuration:
+#
+#     https://vivien.github.io/i3blocks
+
+# Global properties
+full_text=•
+align=center
+color=#666666
+separator=false
+separator_block_width=10
+
+[time]
+markup=pango
+color=#FCFF60
+command=date '+<big>  <span font="Aquire" color="#9EFF00">%A  </span><span color="#FF7C43">%d/%m  </span><span color="#4DAAFF">%I:%M <span font="Aquire">%p</span></span></big>'; [[ -z "${BLOCK_BUTTON}" ]] || zenity --calendar
+interval=5
+min_width=550
+align=left
+
+[volume]
+color=#FF86F9
+command=/usr/lib/i3blocks/sbvolume; [[ -z "${BLOCK_BUTTON}" ]] || pavucontrol
+signal=10
+
+[separator]
+
+[memory]
+color=#73FDFF
+command=perl /usr/lib/i3blocks/ramshow.pl
+label= 
+interval=10
+
+[separator]
+
+#[cpu]
+#command= top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}'
+#label= 
+#interval=10
+#
+#[separator]
+
+[battery]
+command=/usr/lib/i3blocks/sbbattery
+markup=pango
+interval=5
+
+[separator]
+
+[notification]
+color=#FF6969
+command=echo ""; [[ -z "${BLOCK_BUTTON}" ]] || xfce4-notifyd-config
+interval=once
+
+[seperator]
+
+#[time]
+#command=echo "<span background='#3498db'><b> `date +'%I:%M %p'` </b></span>"
+##label=
+#interval=10
+#markup=pango
+##separator_block_width=30
+##align=center
+#
